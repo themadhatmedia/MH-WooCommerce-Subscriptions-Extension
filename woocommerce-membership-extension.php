@@ -54,14 +54,14 @@ function mhm_wc_membership_setup_callback() {
 	$product_id = get_option('mhm_memberpress_init_license_wc_membership_page_extention_product_id');
 	$verify = mhm_plugin_verify_account( $email, $license_key, $product_id ); 
 	
-	if ( !$verify ) {
+	if ( !isset($verify) ) {
 		echo "<h3>The license key entered was invalid. Please check your credentials and try again.</h3>";
 	} else {
 		echo "<h3>Your license is successfully verified.</h3>";
 	}	
 	
     ?>
-    <div class="notice notice-<?php echo $data?> is-dismissible">
+    <div class="notice notice-<?php echo $data?>">
 	<h3>Software key for Madhatmedia Woocommerce Subscription Extension plugin</h3>
 		<form method="POST">
 		  <p>
@@ -80,7 +80,7 @@ $license_key = get_option('mhm_memberpress_init_license_wc_membership_page_exten
 $product_id = get_option('mhm_memberpress_init_license_wc_membership_page_extention_product_id');
 $verify = mhm_plugin_verify_account( $email, $license_key, $product_id );
 
-if ( $verify ) {
+if ( isset($verify) ) {
 	 
 	class WC_Checkout {
 
